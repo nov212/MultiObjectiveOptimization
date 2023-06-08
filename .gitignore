@@ -1,0 +1,12 @@
+# build directory
+build
+
+# CMake properties
+CMakeFiles
+*.cmake
+CMakeCach.txt
+
+#vs properties
+*.vcxproj
+*.vcxproj.*
+*.sln

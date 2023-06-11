@@ -6,6 +6,8 @@ class Solver
 public:
 	std::list<Point> grid_method(GridBuilder& grid_builder, std::vector<double>(*func)(const Point&), 
 									uint32_t iterations, uint16_t step, const std::vector<double>& ranges);
+	Grid parallel_grid_method(const Grid& grid, Grid::iterator begin, Grid::iterator end, std::vector<double>(*func)(const Point&));
+	Grid normal_distribution();
 private:
 	enum cmp_state_t
 	{
@@ -16,16 +18,16 @@ private:
 	};
 
 	/// <summary>
-	/// Определяет какая из двух точек безусловно лучше или являются ли они несравнимыми.
-	/// Функция сравнивает значения критериев в точках и возвращает результат сравнения в виде целого числа со знаком.
+	/// РћРїСЂРµРґРµР»СЏРµС‚ РєР°РєР°СЏ РёР· РґРІСѓС… С‚РѕС‡РµРє Р±РµР·СѓСЃР»РѕРІРЅРѕ Р»СѓС‡С€Рµ РёР»Рё СЏРІР»СЏСЋС‚СЃСЏ Р»Рё РѕРЅРё РЅРµСЃСЂР°РІРЅРёРјС‹РјРё.
+	/// Р¤СѓРЅРєС†РёСЏ СЃСЂР°РІРЅРёРІР°РµС‚ Р·РЅР°С‡РµРЅРёСЏ РєСЂРёС‚РµСЂРёРµРІ РІ С‚РѕС‡РєР°С… Рё РІРѕР·РІСЂР°С‰Р°РµС‚ СЂРµР·СѓР»СЊС‚Р°С‚ СЃСЂР°РІРЅРµРЅРёСЏ РІ РІРёРґРµ С†РµР»РѕРіРѕ С‡РёСЃР»Р° СЃРѕ Р·РЅР°РєРѕРј.
 	/// </summary>
-	/// <param name="p1">Первая сравниваемая точка</param>
-	/// <param name="p2">Вторая сравниваемая точка</param>
-	/// <param name="func">Критерий задачи</param>
+	/// <param name="p1">РџРµСЂРІР°СЏ СЃСЂР°РІРЅРёРІР°РµРјР°СЏ С‚РѕС‡РєР°</param>
+	/// <param name="p2">Р’С‚РѕСЂР°СЏ СЃСЂР°РІРЅРёРІР°РµРјР°СЏ С‚РѕС‡РєР°</param>
+	/// <param name="func">РљСЂРёС‚РµСЂРёР№ Р·Р°РґР°С‡Рё</param>
 	/// <returns>
-	/// 0 - точки несравнимы;
-	/// 1 - p1 безусловно лучше p2;
-	/// -1 - p2 безусловно лучше p1;
+	/// 0 - С‚РѕС‡РєРё РЅРµСЃСЂР°РІРЅРёРјС‹;
+	/// 1 - p1 Р±РµР·СѓСЃР»РѕРІРЅРѕ Р»СѓС‡С€Рµ p2;
+	/// -1 - p2 Р±РµР·СѓСЃР»РѕРІРЅРѕ Р»СѓС‡С€Рµ p1;
 	/// </returns>
 	int8_t compare(const Point& p1, const Point& p2, std::vector<double> (*func)(const Point&));
 };

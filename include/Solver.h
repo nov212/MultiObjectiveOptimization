@@ -4,10 +4,7 @@
 class Solver
 {
 public:
-	std::list<Point> grid_method(GridBuilder& grid_builder, std::vector<double>(*func)(const Point&), 
-									uint32_t iterations, uint16_t step, const std::vector<double>& ranges);
-	Grid parallel_grid_method(const Grid& grid, Grid::iterator begin, Grid::iterator end, std::vector<double>(*func)(const Point&));
-	Grid normal_distribution();
+	std::list<Point> grid_method(const Grid& point_set, std::vector<double>(*func)(const Point&));
 private:
 	enum cmp_state_t
 	{

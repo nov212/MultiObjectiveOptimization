@@ -11,23 +11,7 @@ class GridBuilder
 public:
 	// step - шаг сетки
 	// dimention - размерность сетки
-	virtual Grid generate_grid(uint8_t dimenion, uint16_t step, const std::vector<double>& ranges) = 0;
-};
-
-class SimpleGrid_1 : public GridBuilder
-{
-public:
-	virtual Grid generate_grid(uint8_t dimenion, uint16_t step, const std::vector<double>& ranges) override final;
-};
-
-class SimpleGrid_2 : public GridBuilder
-{
-public:
-	virtual Grid generate_grid(uint8_t dimension, uint16_t step, const std::vector<double>& ranges) override final;
-};
-
-class UniformDistributionGrid : public GridBuilder
-{
-public:
-	virtual Grid generate_grid(uint8_t dimension, uint16_t step, const std::vector<double>& ranges) override final;
+	static Grid simple_grid_1(uint8_t dimenion, uint16_t step, const std::vector<double>& ranges);
+	static Grid simple_grid_2(uint8_t dimenion, uint16_t step, const std::vector<double>& ranges);
+	static Grid uniform_distribution_grid(uint8_t dimenion, uint16_t step, const std::vector<double>& ranges, double alpha);
 };
